@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'devise'
 gem 'simple_token_authentication', '~> 1.0'
+gem 'cancancan', '~> 1.10'
 
 group :development, :test do
   gem 'byebug'
@@ -21,4 +22,3 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-
