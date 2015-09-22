@@ -1,7 +1,9 @@
 class ApiController < ApplicationController
-  before_action :set_default_response_format
+  acts_as_token_authentication_handler_for User
 
   load_and_authorize_resource
+
+  before_action :set_default_response_format
 
   private
 
