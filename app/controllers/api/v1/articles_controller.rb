@@ -5,7 +5,7 @@ class Api::V1::ArticlesController < ApiController
     if @article.save
       render :show, status: :created
     else
-      render json: @article.errors, status: :unprocessable_entity
+      render json: { errors: @article.errors }, status: :unprocessable_entity
     end
   end
 

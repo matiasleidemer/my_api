@@ -40,5 +40,30 @@ RSpec.describe 'Admin articles request', type: :request do
         expect(response.status).to eq(201)
       end
     end
+
+    context 'with invalid parameters' do
+      let(:params) do
+        {
+          article: {
+            title: ''
+          }
+        }
+      end
+
+      it 'does not creates a new article' do
+        request
+        expect(Article.count).to eql 0
+      end
+
+      it 'renders the error messages' do
+        request
+        expect(response.body).to match(/errors/)
+      end
+
+      it 'responds with unprocessable entity status' do
+        request
+        expect(response.status).to eq(422)
+      end
+    end
   end
 end
