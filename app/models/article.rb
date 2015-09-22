@@ -1,5 +1,7 @@
 class Article < ActiveRecord::Base
-  validates :title, :body, presence: true
+  belongs_to :author, class_name: User, foreign_key: :user_id
+
+  validates :title, :body, :author, presence: true
 
   def published?
     published_at.present?
