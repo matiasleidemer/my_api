@@ -3,7 +3,7 @@ class Api::V1::CommentsController < ApiController
   load_and_authorize_resource :comment, through: :article
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = @article.comments.new(comment_params)
 
     if @comment.save
       render :show, status: :created
@@ -31,6 +31,6 @@ class Api::V1::CommentsController < ApiController
   private
 
   def comment_params
-    params.require(:comment).permit(:author, :title, :body)
+    params.require(:comment).permit(:author, :body, :article_id)
   end
 end
