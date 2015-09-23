@@ -1,6 +1,6 @@
 class Api::V1::ArticlesController < ApiController
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.new(article_params)
 
     if @article.save
       render :show, status: :created
@@ -28,6 +28,6 @@ class Api::V1::ArticlesController < ApiController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :published_at, :user_id)
+    params.require(:article).permit(:title, :body, :published_at)
   end
 end

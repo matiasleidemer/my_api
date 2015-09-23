@@ -9,8 +9,10 @@ class Ability
     elsif user.persisted?
       can :read, :all
       can :manage, Article, user_id: user.id
+      can :create, Comment
     else
       can :read, :all
+      can :create, Comment
     end
   end
 end
