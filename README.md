@@ -13,8 +13,8 @@ This is a simple rails app to illustrate a simple restful api
 
 ### Set up
 
-run `bundle` to install the dependencies;
-run `bundle exec rake db:setup` to set up the database. It'll also add some registers using the seeds file;
+- run `bundle` to install the dependencies;
+- run `bundle exec rake db:setup` to set up the database. It'll also add some registers using the seeds file;
 
 ### Running
 
@@ -39,7 +39,7 @@ There are currently 3 access roles:
 
 ### Authentication
 
-_Devise_ and _simple_token_authentication_ are used for authentication. The `bundle exec rake db:setup` will create an Admin and a User. In order to authenticate you need to pass the `user_email` and the `user_token` params along with the request. Example:
+_Devise_ and _simple_token_authentication_ are used for authentication. Running `bundle exec rake db:setup` will create an Admin and a User. In order to authenticate you need to pass the `user_email` and the `user_token` params along with the request. Example:
 
 ```
 curl \
@@ -48,7 +48,7 @@ curl \
 http://localhost:3000/api/v1/articles?user_email=user@company.com&user_token=kixCHzTycqt2vP5Py-ky
 ```
 
-This will create a new article. If the `user_email` and `user_token` don't get passed (or don't match with the database) the access will be unauthorized.
+This will create a new article. If the `user_email` and `user_token` don't get passed (or don't match with the database) the access will be unauthorized. Guest users don't need to authenticate.
 
 ### Tests
 
