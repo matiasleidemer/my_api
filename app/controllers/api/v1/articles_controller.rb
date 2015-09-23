@@ -9,6 +9,14 @@ class Api::V1::ArticlesController < ApiController
     end
   end
 
+  def update
+    if @article.update_attributes(article_params)
+      render :show, status: :ok
+    else
+      render json: { errors: @article.errors }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def article_params

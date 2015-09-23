@@ -4,4 +4,10 @@ module PathHelpers
 
     api_v1_articles_path(params)
   end
+
+  def article_path(user, params = {})
+    params.merge!(user_email: user.email, user_token: user.authentication_token)
+
+    api_v1_article_path(params)
+  end
 end
