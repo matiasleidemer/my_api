@@ -1,4 +1,6 @@
 class ApiController < ApplicationController
+  protect_from_forgery with: :null_session
+
   acts_as_token_authentication_handler_for User, fallback: :none
 
   load_and_authorize_resource
