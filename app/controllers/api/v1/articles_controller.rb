@@ -28,6 +28,6 @@ class Api::V1::ArticlesController < ApiController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :user_id)
+    params.require(:article).permit(:title, :body, :published_at, :user_id)
   end
 end

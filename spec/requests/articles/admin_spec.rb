@@ -30,6 +30,7 @@ RSpec.describe 'Admin articles request', type: :request do
           article: {
             title: 'Foo Bar',
             body: 'This is an article body',
+            published: Time.now.iso8601,
             user_id: user.id
           }
         }
