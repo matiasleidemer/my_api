@@ -91,7 +91,7 @@ RSpec.describe 'Admin articles request', type: :request do
         }
       end
 
-      it 'updates a new article' do
+      it 'updates the article' do
         request
         expect(Article.last.attributes)
           .to include(params[:article].with_indifferent_access)

@@ -8,7 +8,7 @@ class Ability
       can :manage, :all
     elsif user.persisted?
       can :read, :all
-      can :manage, Article, author_id: user.id
+      can :manage, Article, user_id: user.id
     else
       can :read, :all
     end
