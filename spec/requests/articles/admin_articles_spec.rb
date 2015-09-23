@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Admin articles request', type: :request do
-  let(:user) do
+  let!(:user) do
     User.create(email: 'foo@bar.com', password: '123change', admin: true)
   end
 
-  let(:article) { Article.create(title: 'Title', body: 'Body', author: user) }
+  let!(:article) { Article.create(title: 'Title', body: 'Body', author: user) }
 
   describe "get '/api/v1/articles'" do
     it 'reads all the articles' do
@@ -61,7 +61,7 @@ RSpec.describe 'Admin articles request', type: :request do
 
       it 'does not creates a new article' do
         request
-        expect(Article.count).to eql 0
+        expect(Article.count).to eql 1
       end
 
       it 'renders the error messages' do
@@ -76,7 +76,7 @@ RSpec.describe 'Admin articles request', type: :request do
     end
   end
 
-  describe "patch '/api/v1/article'" do
+  describe "patch '/api/v1/article/:id'" do
     let(:request) { patch article_path(user, params) }
 
     context 'with valid parameters' do
@@ -131,6 +131,23 @@ RSpec.describe 'Admin articles request', type: :request do
       it 'responds with unprocessable entity status' do
         request
         expect(response.status).to eq(422)
+      end
+    end
+  end
+
+  describe "delete '/api/v1/article/:id'" do
+    let(:request) { delete article_path(user, params) }
+
+    context 'with valid parameters' do
+      let(:params) { { id: article.id } }
+
+      it 'destroys the article' do
+        expect { request }.to change { Article.count }.by(-1)
+      end
+
+      it 'responds with no content status' do
+        request
+        expect(response.status).to eq(204)
       end
     end
   end

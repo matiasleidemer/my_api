@@ -17,6 +17,14 @@ class Api::V1::ArticlesController < ApiController
     end
   end
 
+  def destroy
+    if @article.destroy
+      head :no_content
+    else
+      head :unprocessable_entity
+    end
+  end
+
   private
 
   def article_params
