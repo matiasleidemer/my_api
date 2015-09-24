@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Admin articles request', type: :request do
+RSpec.describe 'Articles request', type: :request do
   let!(:user) do
     User.create(email: 'foo@bar.com', password: '123change', admin: true)
   end
