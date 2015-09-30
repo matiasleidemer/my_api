@@ -7,22 +7,24 @@ RSpec.describe 'Articles request', type: :request do
 
   let!(:article) { Article.create(title: 'Title', body: 'Body', author: user) }
 
+  before { authenticate_request_for(user) }
+
   describe "get '/api/v1/articles'" do
     it 'reads all the articles' do
-      get articles_path(user)
+      get api_v1_articles_path, {}, @env
       expect(response).to render_template(:index)
     end
   end
 
   describe "get '/api/v1/article/:id" do
     it 'shows the article' do
-      get article_path(user, id: article.id)
+      get api_v1_article_path(article), {}, @env
       expect(response).to render_template(:show)
     end
   end
 
   describe "post '/api/v1/articles'" do
-    let(:request) { post articles_path(user, params) }
+    let(:request) { post api_v1_articles_path(params), {}, @env }
 
     context 'with valid parameters' do
       let(:params) do
@@ -78,7 +80,7 @@ RSpec.describe 'Articles request', type: :request do
   end
 
   describe "patch '/api/v1/article/:id'" do
-    let(:request) { patch article_path(user, params) }
+    let(:request) { patch api_v1_article_path(params), {}, @env }
 
     context 'with valid parameters' do
       let(:params) do
@@ -137,7 +139,7 @@ RSpec.describe 'Articles request', type: :request do
   end
 
   describe "delete '/api/v1/article/:id'" do
-    let(:request) { delete article_path(user, params) }
+    let(:request) { delete api_v1_article_path(params), {}, @env }
 
     context 'with valid parameters' do
       let(:params) { { id: article.id } }
