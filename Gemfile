@@ -7,7 +7,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'simple_token_authentication', '~> 1.0'
 gem 'cancancan', '~> 1.10'
 
 group :development, :test do
