@@ -8,22 +8,24 @@ RSpec.describe 'Admin comments request', type: :request do
     User.create(email: 'foo@bar.com', password: '123change', admin: true)
   end
 
+  before { authenticate_request_for(user) }
+
   describe "get '/api/v1/articles/:article_id/comments'" do
     it 'reads all comments from article' do
-      get comments_path(user, article)
+      get api_v1_article_comments_path(article), {}, @env
       expect(response).to render_template(:index)
     end
   end
 
   describe "get '/api/v1/articles/:article_id/comment" do
     it 'shows the comment from article' do
-      get comment_path(user, article, id: comment.id)
+      get api_v1_article_comment_path(article, comment), {}, @env
       expect(response).to render_template(:show)
     end
   end
 
   describe "post '/api/v1/articles/:article_id/comments'" do
-    let(:request) { post comments_path(user, article, params) }
+    let(:request) { post api_v1_article_comments_path(article, params), {}, @env }
 
     context 'with valid parameters' do
       let(:params) do
@@ -77,7 +79,7 @@ RSpec.describe 'Admin comments request', type: :request do
   end
 
   describe "patch '/api/v1/articles/:article_id/comment/:id'" do
-    let(:request) { patch comment_path(user, article, params) }
+    let(:request) { patch api_v1_article_comment_path(article, params), {}, @env }
 
     context 'with valid parameters' do
       let(:params) do
@@ -134,7 +136,7 @@ RSpec.describe 'Admin comments request', type: :request do
   end
 
   describe "delete '/api/v1/article/:article_id/comment/:id'" do
-    let(:request) { delete comment_path(user, article, params) }
+    let(:request) { delete api_v1_article_comment_path(article, params), {}, @env }
 
     context 'with valid parameters' do
       let(:params) { { id: comment.id } }
