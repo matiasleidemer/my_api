@@ -1,5 +1,5 @@
-admin = User.create!(email: 'admin@trycatch.us', password: '123change')
-user  = User.create!(email: 'user@trycatch.us' , password: 'change123')
+admin = User.create!(email: 'admin@trycatch.us', password: '123change', password_confirmation: '123change')
+user  = User.create!(email: 'user@trycatch.us' , password: 'change123', password_confirmation: 'change123')
 
 4.times do
   article = Article.create!(
