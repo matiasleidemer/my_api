@@ -162,7 +162,6 @@ PLATFORMS
 DEPENDENCIES
   byebug
   cancancan (~> 1.10)
-  devise
   faker
   jbuilder (~> 2.0)
   rails (= 4.2.4)
