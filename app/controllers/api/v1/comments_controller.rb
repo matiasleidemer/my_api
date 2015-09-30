@@ -2,6 +2,10 @@ class Api::V1::CommentsController < ApiController
   load_and_authorize_resource :article
   load_and_authorize_resource :comment, through: :article
 
+  def index
+    @comments = @article.comments
+  end
+
   def create
     @comment = @article.comments.new(comment_params)
 
