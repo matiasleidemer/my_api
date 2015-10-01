@@ -1,3 +1,5 @@
+![build status](https://travis-ci.org/matiasleidemer/my_api.svg)
+
 ## my_api
 
 This is a simple rails app to illustrate a simple restful api
