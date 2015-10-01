@@ -1,4 +1,5 @@
 ![build status](https://travis-ci.org/matiasleidemer/my_api.svg)
+[![Code Climate](https://codeclimate.com/github/matiasleidemer/my_api/badges/gpa.svg)](https://codeclimate.com/github/matiasleidemer/my_api)
 
 ## my_api
 
