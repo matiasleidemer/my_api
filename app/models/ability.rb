@@ -12,7 +12,6 @@ class Ability
       can :create, Comment
     else
       can :read, :all
-      can :create, Comment
     end
   end
 end

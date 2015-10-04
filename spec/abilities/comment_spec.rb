@@ -31,9 +31,5 @@ describe 'Comment permissions' do
     it 'can read all comments' do
       expect(subject).to be_able_to(:read, Comment.new)
     end
-
-    it 'can create new comments' do
-      expect(subject).to be_able_to(:create, Comment.new)
-    end
   end
 end
