@@ -16,5 +16,22 @@ describe User do
       end
     end
   end
-end
 
+  describe '#guest?' do
+    context 'when user is a new record' do
+      let(:user) { User.new }
+
+      it 'returns true' do
+        expect(user.guest?).to be true
+      end
+    end
+
+    context 'when user is persisted' do
+      let(:user) { create(:user) }
+
+      it 'returns false' do
+        expect(user.guest?).to be false
+      end
+    end
+  end
+end

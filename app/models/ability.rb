@@ -10,7 +10,7 @@ class Ability
       can :read, :all
       can :manage, Article, user_id: user.id
       can :create, Comment
-    else
+    elsif user.guest?
       can :read, :all
     end
   end
