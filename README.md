@@ -1,4 +1,4 @@
-![build status](https://travis-ci.org/matiasleidemer/my_api.svg)
+[![build status](https://travis-ci.org/matiasleidemer/my_api.svg)](https://travis-ci.org/matiasleidemer/my_api)
 [![Code Climate](https://codeclimate.com/github/matiasleidemer/my_api/badges/gpa.svg)](https://codeclimate.com/github/matiasleidemer/my_api)
 
 ## my_api
@@ -41,6 +41,8 @@ There are currently 3 access roles:
 ### Authentication
 
 Basic http authentication is used. Running `bundle exec rake db:setup` will create an Admin and a User. In order to authenticate you need to fill the user name and password with the user's email and password.
+
+Guest users can be authenticated with both username and password 'guest'
 
 ### Tests
 
