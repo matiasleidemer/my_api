@@ -18,7 +18,7 @@ class ApiController < ApplicationController
   private
 
   def authenticate
-    authenticate_with_http_basic { |e, p| User.authenticate(e, p) } ||
+    authenticate_with_http_basic { |e, p| Authenticator.call(e, p) } ||
       request_http_basic_authentication
   end
 
