@@ -10,6 +10,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'cancancan', '~> 1.10'
 gem 'bcrypt'
 
+gem 'factory_girl_rails'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
