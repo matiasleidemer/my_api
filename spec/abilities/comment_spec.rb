@@ -14,7 +14,7 @@ describe 'Comment permissions' do
   end
 
   context 'User' do
-    let(:user) { User.create(email: 'foo@bar.com', password: '123change') }
+    let(:user) { create(:user) }
 
     it 'can read all comments' do
       expect(subject).to be_able_to(:read, Comment.new)

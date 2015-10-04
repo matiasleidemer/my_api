@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Articles request', type: :request do
-  let!(:user) do
-    User.create(email: 'foo@bar.com', password: '123change', admin: true)
-  end
+  let!(:user) { create(:admin) }
 
   let!(:article) { Article.create(title: 'Title', body: 'Body', author: user) }
 

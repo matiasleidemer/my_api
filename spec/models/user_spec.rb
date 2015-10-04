@@ -2,13 +2,7 @@ require 'rails_helper'
 
 describe User do
   describe '.authenticate' do
-    let!(:user) do
-      User.create(
-        email: 'foo@bar.com',
-        password: '123change',
-        password_confirmation: '123change'
-      )
-    end
+    let!(:user) { create(:user) }
 
     context 'with valid credentials' do
       it 'returns the user' do
